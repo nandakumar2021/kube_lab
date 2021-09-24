@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-cam
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-cam
+  template:
+    metadata:
+      labels:
+        app: hello-cam
+    spec:
+      containers:
+      - name: hello-cam
+        image: 54658787654/cam
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: hello-cam
+spec:
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  selector:
+    app: hello-cam

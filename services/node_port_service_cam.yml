@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-ncam
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-ncam
+  template:
+    metadata:
+      labels:
+        app: hello-ncam
+    spec:
+      containers:
+      - name: hello-ncam
+        image: camunda/camunda-bpm-platform:latest  
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: hello-ncam
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30060
+  selector:
+    app: hello-ncam

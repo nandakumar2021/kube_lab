@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+ name: app-pv
+ labels:
+   vol: mysql
+spec:
+ capacity:
+   storage: 4Gi
+ accessModes:
+   - ReadWriteOnce
+ nfs:
+    server: 34.217.217.177
+    path: "/export"

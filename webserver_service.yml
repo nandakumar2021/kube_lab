@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: app-service-clusterip
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-service-clusterip
+  template:
+    metadata:
+      labels:
+        app: app-service-clusterip
+    spec:
+      containers:
+         - name: image-service-clusterip
+           image: 54658787654/webapp2:latest 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ser-service-clusterip
+spec:
+  type: ClusterIP
+  ports:
+   - protocol: TCP
+     port: 80
+     targetPort: 80
+  selector:
+     app: ser-service-clusterip
+              

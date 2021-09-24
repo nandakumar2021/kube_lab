@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: hello-world
+    namespace: awsaug
+spec:
+    containers:
+       - name: hello-world
+         image: 54658787654/webapp1:latest

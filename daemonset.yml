@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet 
+metadata:
+   name: hello-world
+spec:
+  selector:
+    matchLabels:
+      app: hello-world-pod
+  template:
+    metadata:
+      labels:
+        app: hello-world-pod
+    spec:
+      nodeSelector:
+          env: "test" 
+      containers:
+        - name: hello-world
+          image: 54658787654/webapp1:latest

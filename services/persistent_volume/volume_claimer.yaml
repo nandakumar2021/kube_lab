@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: vc-pod
+spec:
+   containers:
+   - name: hello-ctr
+     image: rvegesna/centos:httpd1
+     volumeMounts:
+        - name: data
+          mountPath: /data
+     ports:
+     - containerPort: 80
+   volumes:
+     - name: data
+       persistentVolumeClaim:
+          claimName: pvc-nfs-data

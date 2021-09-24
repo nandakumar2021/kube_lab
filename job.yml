@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+    name: job-world
+spec:
+    template:
+       metadata:
+           labels:
+             app:  job-world
+       spec: 
+         restartPolicy: OnFailure 
+         containers:
+         - name: job-world
+           image: 54658787654/webapp1:latest
